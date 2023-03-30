@@ -1,0 +1,69 @@
+import random
+import time
+import math
+def t(text):
+    print()
+    for z in text:
+        print(z, end='')
+        time.sleep(0.07)
+# t("Доброго дня сеньор")
+# t("Якщо ви бажаєте отборних девушек з пріколом между ног")
+# t("Вам прийдеться виграти мене")
+
+koloda = {'6' : 6,
+          '7' : 7,
+          '8' : 8,
+          '9': 9,
+          '10': 10,
+          'Valet': 2,
+          'Dama': 3,
+          'King' : 4,
+          'Tus' : 11,
+          }
+nigga_jack = []
+for z in koloda.keys():
+    for x in range(4):
+        nigga_jack.append(z)
+
+
+rozdavala = 0  # діллер який викидує карти по очереді
+diler_durak = []
+random.shuffle(nigga_jack)
+
+t('Будь ласка введіть кількість гравців')
+z = int(input())
+# inputici_po_dely = input()
+igrochku = [x for x in range(z)]
+    # начало цикла #
+# if inputici_po_dely == 'стоп':
+#     quit()
+
+for i in range(z):
+    t(f'Щас іграє номер {i + 1} ')
+    inputici_po_dely = input('Ще/Пас?')
+    while inputici_po_dely.lower() != 'пас':
+        rozdavala = nigga_jack.pop()
+        print(rozdavala)
+        igrochku[i] += koloda[rozdavala]
+        t(f'Прінт {igrochku[i]}\n')
+        if igrochku[i] > 21:
+            print('Ваші очки перевисили за 21')
+            break
+        inputici_po_dely = input('Ще/Пас?')
+for x in igrochku:
+    diler_durak.append(math.fabs(21 -x))
+
+
+
+
+t(f'Виграв ігрок номер {diler_durak.index(min(diler_durak)) + 1}')
+
+
+
+
+# if math.fabs(21 - user_kol) < math.fabs(21 - user_2_kol):
+#     t(f'В цій грі виграє гравець №1 - {user_kol} гравець №2 не переживай, повезе в наступний раз - {user_2_kol}')
+# elif math.fabs(21 - user_kol) > math.fabs(21 - user_2_kol):
+#     t(f'В цій грі виграє гравець №2 - {user_2_kol} гравець №1 не переживай, повезе в наступний раз - {user_kol}')
+# else:
+#     t(f'Цього разу гравці набрали поровну очків: 1 - {user_kol} і 2 - {user_2_kol}')
